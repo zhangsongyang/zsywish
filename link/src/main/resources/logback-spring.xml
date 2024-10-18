@@ -8,7 +8,7 @@
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg [(%L)] %n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %cyan(%logger{50}).%M\(%F:%L\) %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -21,23 +21,23 @@
             <maxFileSize>1000MB</maxFileSize>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{150} - %msg [(%L)] %n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %cyan(%logger{50}).%M\(%F:%L\) %msg%n</pattern>
         </encoder>
     </appender>
 
 <!--     这里替换成AspectLogbackAsyncAppender -->
-<!--    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">-->
-<!--&lt;!&ndash;        设置丢弃日志的阈值，0 表示不丢弃。&ndash;&gt;-->
-<!--        <discardingThreshold>0</discardingThreshold>-->
-<!--&lt;!&ndash;        设置异步队列的大小，默认为 256&ndash;&gt;-->
-<!--        <queueSize>2048</queueSize>-->
-<!--&lt;!&ndash;        这个元素用于指定是否在日志事件中包含调用者数据。 true: 如果设置为 true，则日志记录器会在日志事件中包含调用者的类名、方法名和行号等信息。 false: 如果设置为 false，则日志记录器不会包含这些信息。&ndash;&gt;-->
-<!--        <includeCallerData>true</includeCallerData>-->
-<!--&lt;!&ndash;        引用定义的文件 Appender。&ndash;&gt;-->
-<!--        <appender-ref ref="FILE"/>-->
-<!--&lt;!&ndash;        设置是否在队列满时阻塞，默认为 false，设置为 true 可以避免阻塞。&ndash;&gt;-->
-<!--        <neverBlock>true</neverBlock>-->
-<!--    </appender>-->
+    <appender name="ASYNC_FILE" class="ch.qos.logback.classic.AsyncAppender">
+<!--        设置丢弃日志的阈值，0 表示不丢弃。-->
+        <discardingThreshold>0</discardingThreshold>
+<!--        设置异步队列的大小，默认为 256-->
+        <queueSize>2048</queueSize>
+<!--        这个元素用于指定是否在日志事件中包含调用者数据。 true: 如果设置为 true，则日志记录器会在日志事件中包含调用者的类名、方法名和行号等信息。 false: 如果设置为 false，则日志记录器不会包含这些信息。-->
+        <includeCallerData>true</includeCallerData>
+<!--        引用定义的文件 Appender。-->
+        <appender-ref ref="FILE"/>
+<!--        设置是否在队列满时阻塞，默认为 false，设置为 true 可以避免阻塞。-->
+        <neverBlock>true</neverBlock>
+    </appender>
 
     <!-- 设置MyBatis的日志输出级别 -->
     <logger name="org.mybatis" level="DEBUG">
