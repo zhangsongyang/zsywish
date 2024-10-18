@@ -1,6 +1,8 @@
 package org.example.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.example.mapper.CountryMapper;
 import org.example.model.Country;
 import org.example.vo.CountryQuery;
@@ -15,6 +17,7 @@ import java.util.List;
  * @author liuzh
  * @since 2015-12-19 11:09
  */
+@Slf4j
 @Service
 public class CountryService {
 
@@ -22,6 +25,7 @@ public class CountryService {
     private CountryMapper countryMapper;
 
     public List<Country> listCountry(CountryQuery query) {
+        log.info("page----->:" + JSONObject.toJSONString(query));
         PageHelper.startPage(query.getPage(), query.getRows());
         return countryMapper.listCountry(query);
     }

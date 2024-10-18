@@ -44,3 +44,7 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params-helper-dialect: mysql
+
+# 进行RPC调用时，会自动打印出参数信息和调用时间信息：
+tlog:
+  enable-invoke-time-print: true

@@ -60,7 +60,7 @@ public class CountryController {
 
     @PostMapping("/xxx")
     public String testJuc(@RequestBody CountryQuery query) {
-        System.out.println("123456789");
+        log.info("123456789");
         List<Country> countryList = countryService.listCountry(query);
         if (CollectionUtils.isEmpty(countryList)) {
             return null;
